@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Search from "./Search";
 
 export default function Header() {
   return (
@@ -45,7 +46,7 @@ export default function Header() {
       </div>
 
       {/* 테마변경 */}
-      <label className="order-4 ml-auto swap swap-rotate">
+      <label className="order-4 ml-auto swap swap-rotate mr-4">
         <svg
           className="swap-on fill-current w-7 h-7"
           xmlns="http://www.w3.org/2000/svg"
@@ -62,9 +63,12 @@ export default function Header() {
         </svg>
       </label>
 
+      {/* 검색창 */}
+      <Search />
+
       {/* 장바구니 */}
-      <label tabIndex={0} className="order-5 btn btn-ghost btn-circle">
-        <div className="indicator">
+      <label tabIndex={0} className="order-6 btn btn-ghost btn-circle ml-1">
+        <Link to="/cart" className="indicator">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -82,7 +86,7 @@ export default function Header() {
           <span className="badge badge-sm bg-red-500 border-none indicator-item ">
             0
           </span>
-        </div>
+        </Link>
       </label>
     </nav>
   );
