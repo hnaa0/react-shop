@@ -17,7 +17,10 @@ function Item({ data }: { data: ItemDataType }) {
   let img = new Image();
   img.src = data.image;
   return (
-    <Link to={`/product/${data.id}`} className="card w-72 bg-base-100 border">
+    <Link
+      to={`/product/${data.id}`}
+      className="card w-72 border border-gray-200 dark:border-gray-700 bg-base-100"
+    >
       <figure className="h-80 bg-white">
         {img.width < img.height ? (
           <img
@@ -33,7 +36,7 @@ function Item({ data }: { data: ItemDataType }) {
           />
         )}
       </figure>
-      <div className="card-body h-40 bg-gray-100 rounded-b-2xl">
+      <div className="card-body h-40 bg-gray-100 dark:bg-gray-900 rounded-b-2xl">
         <h2 className="card-title text-base">{data.title}</h2>
         <p>${data.price}</p>
       </div>

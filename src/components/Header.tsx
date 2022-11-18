@@ -1,7 +1,46 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Link, useRevalidator } from "react-router-dom";
 import Search from "./Search";
 
 export default function Header() {
+  const $html = document.querySelector("html");
+  const themeLight = "light";
+  const themeDark = "dark";
+  const cartTotalCount = useSelector(
+    (state: any) => state.cartStore.totalCount
+  );
+
+  const themeChange = (e: any) => {
+    if (e.target.checked) {
+      setLightMode();
+    } else {
+      setDarkMode();
+    }
+    console.log("changed");
+  };
+
+  const setLightMode = () => {
+    $html?.classList.remove(themeDark);
+    $html?.setAttribute("data-theme", themeLight);
+    localStorage.setItem("theme", themeLight);
+  };
+
+  const setDarkMode = () => {
+    $html?.classList.add(themeDark);
+    $html?.setAttribute("data-theme", themeDark);
+    localStorage.setItem("theme", themeDark);
+  };
+
+  useEffect(() => {
+    if (themeLight === localStorage.getItem("theme")) {
+      setLightMode();
+      document.querySelector(".js-theme")?.setAttribute("checked", "checked");
+    } else {
+      setDarkMode();
+    }
+  }, []);
+
   return (
     <nav className="navbar flex bg-base-100 sticky top-0 z-10">
       {/* 메뉴버튼 */}
@@ -47,6 +86,7 @@ export default function Header() {
 
       {/* 테마변경 */}
       <label className="order-4 ml-auto swap swap-rotate mr-4">
+        <input type="checkbox" className="js-theme" onClick={themeChange} />
         <svg
           className="swap-on fill-current w-7 h-7"
           xmlns="http://www.w3.org/2000/svg"
