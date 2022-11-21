@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import itemStore from "./store/item";
+import styled from "styled-components";
 
 interface ItemData {
   id: number;
@@ -31,7 +32,6 @@ export default function App() {
       const URL = "https://fakestoreapi.com/products";
       const res = await fetch(URL);
       const items: ItemData[] = await res.json();
-      console.log(items);
 
       items.forEach((item) => {
         switch (item.category) {
@@ -63,10 +63,16 @@ export default function App() {
   }, []);
 
   return (
-    <div>
+    <>
       <Header />
-      <AppRouter />
+      <Main>
+        <AppRouter />
+      </Main>
       <Footer />
-    </div>
+    </>
   );
 }
+
+const Main = styled.div`
+  min-height: calc(100vh - 352px);
+`;
