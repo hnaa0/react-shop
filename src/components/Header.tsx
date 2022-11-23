@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { Link, useRevalidator } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Search from "./Search";
 
 export default function Header() {
@@ -10,6 +10,8 @@ export default function Header() {
   const cartTotalCount = useSelector(
     (state: any) => state.cartStore.totalCount
   );
+  const sideMenu = useRef<HTMLUListElement>(null);
+  const sideMenuBg = useRef<HTMLDivElement>(null);
 
   const themeChange = (e: any) => {
     if (e.target.checked) {
@@ -32,6 +34,10 @@ export default function Header() {
     localStorage.setItem("theme", themeDark);
   };
 
+  const toggleSideMenu = () => {
+    sideMenu?.current?.classList.toggle("translate-x-56");
+  };
+
   useEffect(() => {
     if (themeLight === localStorage.getItem("theme")) {
       setLightMode();
@@ -42,10 +48,14 @@ export default function Header() {
   }, []);
 
   return (
-    <nav className="navbar flex bg-base-100 sticky top-0 z-10">
+    <nav className="navbar flex bg-base-100 fixed z-10 w-full">
+      <div className="absolute bg-pink-100 z-100 w-56 h-"></div>
       {/* 메뉴버튼 */}
-      <div className="flex-none order-1">
-        <button className="btn btn-square btn-ghost">
+      <div className="order-1 flex-none md:hidden">
+        <button
+          className="btn btn-square btn-ghost w-11"
+          onClick={toggleSideMenu}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -60,11 +70,31 @@ export default function Header() {
             ></path>
           </svg>
         </button>
+        <ul
+          ref={sideMenu}
+          className="menu absolute top-0 -left-56 w-56 h-screen font-bold bg-base-100 p-3 transition-all"
+        >
+          <li>
+            <Link onClick={toggleSideMenu} to="/fashion">
+              패션
+            </Link>
+          </li>
+          <li>
+            <Link onClick={toggleSideMenu} to="/accessory">
+              액세서리
+            </Link>
+          </li>
+          <li>
+            <Link onClick={toggleSideMenu} to="/digital">
+              디지털
+            </Link>
+          </li>
+        </ul>
       </div>
 
       {/* 로고 */}
-      <div className="order-2">
-        <p className="btn btn-ghost normal-case text-lg font-bold">
+      <div className="order-2 ">
+        <p className="btn btn-ghost normal-case text-lg font-bold p-1">
           <Link to="/">REACT SHOP</Link>
         </p>
       </div>
@@ -88,14 +118,14 @@ export default function Header() {
       <label className="order-4 ml-auto swap swap-rotate mr-4">
         <input type="checkbox" className="js-theme" onClick={themeChange} />
         <svg
-          className="swap-on fill-current w-7 h-7"
+          className="swap-on fill-current w-6 h-6"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
           <path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
         </svg>
         <svg
-          className="swap-off fill-current w-7 h-7"
+          className="swap-off fill-current w-6 h-6"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
@@ -107,7 +137,10 @@ export default function Header() {
       <Search />
 
       {/* 장바구니 */}
-      <label tabIndex={0} className="order-6 btn btn-ghost btn-circle ml-1">
+      <label
+        tabIndex={0}
+        className="order-6 btn btn-ghost btn-square ml-1 w-11"
+      >
         <Link to="/cart" className="indicator">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +157,7 @@ export default function Header() {
             />
           </svg>
           <span className="badge badge-sm bg-red-500 border-none indicator-item ">
-            0
+            {cartTotalCount}
           </span>
         </Link>
       </label>

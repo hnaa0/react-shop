@@ -73,6 +73,6 @@ export default function App() {
   );
 }
 
-const Main = styled.div`
+const Main = styled.main`
   min-height: calc(100vh - 352px);
 `;

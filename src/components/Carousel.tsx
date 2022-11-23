@@ -15,14 +15,14 @@ interface CarouselItemsType {
 
 function CarouselItems({ path, title, image, comment }: CarouselItemsType) {
   return (
-    <div>
-      <img src={image} className="h-full" />
-      <div className="absolute transform -translate-y-1/2 top-1/2 left-20">
+    <div className="lg:h-162 w-full min-w-96 pt-16">
+      <img src={image} />
+      <div className="absolute transform -translate-y-1/3 top-1/2 lg:left-20 left-4">
         <div className="text-white text-left">
-          <h1 className="text-2xl font-bold">{title}</h1>
-          <p className="pb-4 text-sm">{comment}</p>
+          <h1 className="lg:text-3xl text-2xl font-bold">{title}</h1>
+          <p className="pb-6 lg:text-lg text-md pt-2 break-all">{comment}</p>
           <Link to={path}>
-            <button className="btn btn-active text-xs ">
+            <button className="btn btn-active text-xs btn-sm lg:btn-md">
               바로가기
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,6 @@ export default function HomeCarousel() {
     <Carousel
       showArrows={true}
       showStatus={true}
-      showIndicators={true}
       showThumbs={false}
       infiniteLoop={true}
       autoPlay={true}
