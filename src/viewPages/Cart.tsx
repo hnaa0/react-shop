@@ -8,8 +8,8 @@ export default function Cart() {
   );
 
   return (
-    <div className="ml-12">
-      <div className="text-sm breadcrumbs">
+    <div className="pt-16 xl:container mx-auto">
+      <div className="px-8 lg:px-12 text-sm breadcrumbs">
         <ul>
           <li>홈</li>
           <li>장바구니</li>

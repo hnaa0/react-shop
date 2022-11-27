@@ -121,9 +121,9 @@ export default function ItemInfo() {
 
   return (
     <section className="main px-4 pt-5 pb-8">
-      <section className="pt-4 lg:pt-5 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto">
+      <section className="pt-16 xl:container mx-auto">
         <div>
-          <div className="text-sm breadcrumbs">
+          <div className="px-4 text-sm breadcrumbs">
             <ul>
               <li>{category}</li>
               <li>{title}</li>

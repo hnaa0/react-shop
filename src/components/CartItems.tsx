@@ -36,8 +36,8 @@ export default function CartItems({ data }: PropsType) {
         </figure>
       </Link>
       <div className="card-body px-1 lg:px-12">
-        <h2 className="card-title">{data.title}</h2>
-        <p className="mt-2 mb-4 text-3xl">${data.price}</p>
+        <h2 className="card-title text-lg lg:text-xl">{data.title}</h2>
+        <p className="mt-1 lg:mt-2 mb-4 text-2xl lg:text-3xl">${data.price}</p>
         <div className="card-actions">
           <div className="btn-group">
             <button className="btn btn-primary" onClick={reduceFromCart}>

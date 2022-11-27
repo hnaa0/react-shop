@@ -19,7 +19,7 @@ function Item({ data }: { data: ItemDataType }) {
   return (
     <Link
       to={`/product/${data.id}`}
-      className="card w-72 border border-gray-200 dark:border-gray-700 bg-base-100"
+      className="card border border-gray-200 dark:border-gray-700 bg-base-100"
     >
       <figure className="h-80 bg-white">
         {img.width < img.height ? (
@@ -36,8 +36,8 @@ function Item({ data }: { data: ItemDataType }) {
           />
         )}
       </figure>
-      <div className="card-body h-40 bg-gray-100 dark:bg-gray-900 rounded-b-2xl">
-        <h2 className="card-title text-base">{data.title}</h2>
+      <div className="card-body h-36 bg-gray-100 dark:bg-gray-900 rounded-b-2xl">
+        <h2 className="card-title text-base line-clamp-2">{data.title}</h2>
         <p>${data.price}</p>
       </div>
     </Link>
@@ -59,12 +59,12 @@ export default function ItemList({ category }: propsType) {
   };
 
   return (
-    <div className="max-w-7xl">
-      <h1 className="text-center pt-16 mb-8 text-2xl font-bold">
+    <div className="pb-8">
+      <h1 className="text-center pt-16 mb-8 text-3xl lg:text-4xl font-bold">
         {categoryTitles[category]}
       </h1>
-      <div className="p-4 sm:overflow-visible">
-        <div className="grid sm:w-full sm:grid-cols-2 md:grid-cols-4">
+      <div className="px-8 lg:px-12">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {itemData.map((itemDataInfo, index) => {
             if (index < 4) {
               return <Item key={itemDataInfo.id} data={itemDataInfo} />;

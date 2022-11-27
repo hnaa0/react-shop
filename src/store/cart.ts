@@ -11,8 +11,10 @@ export interface CartItemsType {
 const cartStore = createSlice({
   name: "cart",
   initialState: {
-    items: {} as CartItemsType,
-    totalCount: 0,
+    items:
+      JSON.parse(localStorage.getItem("CART_ITEMS") as string) ??
+      ({} as CartItemsType),
+    totalCount: JSON.parse(localStorage.getItem("CART_COUNT") as string) ?? 0,
   },
   reducers: {
     addCartItem(state: any, action: any) {

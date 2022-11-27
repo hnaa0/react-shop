@@ -2,7 +2,7 @@ import AppRouter from "./AppRouter";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import itemStore from "./store/item";
 import styled from "styled-components";
 
@@ -62,6 +62,15 @@ export default function App() {
     getItems();
   }, []);
 
+  const cartItems = useSelector((state: any) => state.cartStore);
+  const loadCartItems = () => {
+    localStorage.setItem("CART_ITEMS", JSON.stringify(cartItems.items));
+    localStorage.setItem("CART_COUNT", JSON.stringify(cartItems.totalCount));
+  };
+  useEffect(() => {
+    loadCartItems();
+  }, [cartItems]);
+
   return (
     <>
       <Header />
@@ -74,5 +83,5 @@ export default function App() {
 }
 
 const Main = styled.main`
-  min-height: calc(100vh - 352px);
+  min-height: calc(100vh - 288px);
 `;

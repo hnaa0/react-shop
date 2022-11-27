@@ -17,7 +17,7 @@ function Item({ data }: { data: ItemDataType }) {
   return (
     <Link
       to={`/product/${data.id}`}
-      className="card w-72 bg-base-100 border border-gray-200 dark:border-gray-700"
+      className="card bg-base-100 border border-gray-200 dark:border-gray-700"
     >
       <figure className="h-80 bg-white">
         {img.width < img.height ? (
@@ -34,8 +34,8 @@ function Item({ data }: { data: ItemDataType }) {
           />
         )}
       </figure>
-      <div className="card-body h-40 bg-gray-100 dark:bg-gray-900 rounded-b-2xl">
-        <h2 className="card-title text-base">{data.title}</h2>
+      <div className="card-body h-36 bg-gray-100 dark:bg-gray-900 rounded-b-2xl">
+        <h2 className="card-title text-base line-clamp-2">{data.title}</h2>
         <p>${data.price}</p>
       </div>
     </Link>
@@ -71,19 +71,19 @@ export default function Items({ category }: any) {
 
   return (
     <section className="main">
-      <section className="pt-4 lg:pt-5 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto">
-        <div className="text-sm breadcrumbs">
+      <section className="pt-16 xl:container mx-auto">
+        <div className="px-8 lg:px-12 text-sm breadcrumbs">
           <ul>
             <li>홈</li>
             <li>{categoryName}</li>
           </ul>
         </div>
-        <article className="pt-2 lg:pt-4 pb-4 lg:pb-8 px-4 xl:px-2 mb-20 xl:container mx-auto">
+        <article className="pt-2 lg:pt-4 pb-4 lg:pb-8 px-8 lg:px-12 mb-20 xl:container mx-auto">
           <h2 className="mb-5 lg:mb-8 text-3xl lg:text-4xl text-center font-bold">
             {categoryName}
           </h2>
           <div
-            className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 item_list"
+            className="grid gap-5 md:grid-cols-2 lg:grid-cols-4"
             data-scroll="false"
           >
             {itemData.map((itemDataInfo) => {

@@ -3,12 +3,8 @@ export default function Footer() {
     <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded bg-white">
       {/* 제로베이스 링크 */}
       <div className="grid grid-flow-col gap-4">
-        <a
-          href="https://zero-base.co.kr/"
-          className="link link-hover"
-          target="_blank"
-        >
-          제로베이스
+        <a href="#" className="link link-hover" target="_blank">
+          React shop
         </a>
       </div>
 
@@ -206,7 +202,7 @@ export default function Footer() {
       <div>
         <div className="grid grid-flow-col gap-4">
           <a
-            href="https://www.facebook.com/0base"
+            href="#"
             className="tooltip"
             target="_blank"
             rel="noopener noreferrer"
@@ -226,7 +222,7 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            href="https://www.instagram.com/zerobase.official"
+            href="#"
             className="tooltip"
             target="_blank"
             rel="noopener noreferrer"
@@ -245,7 +241,7 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            href="https://github.com/oinochoe"
+            href="https://github.com/hnaa0"
             className="tooltip"
             target="_blank"
             rel="noopener noreferrer"
@@ -266,7 +262,7 @@ export default function Footer() {
 
       {/* 카피라이트 */}
       <div>
-        <p>Copyright © 2022 Zero Base</p>
+        <p>Copyright ©</p>
       </div>
     </footer>
   );

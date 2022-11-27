@@ -16,7 +16,7 @@ interface CarouselItemsType {
 function CarouselItems({ path, title, image, comment }: CarouselItemsType) {
   return (
     <div className="lg:h-162 w-full min-w-96 pt-16">
-      <img src={image} />
+      <img src={image} className="brightness-75" />
       <div className="absolute transform -translate-y-1/3 top-1/2 lg:left-20 left-4">
         <div className="text-white text-left">
           <h1 className="lg:text-3xl text-2xl font-bold">{title}</h1>
